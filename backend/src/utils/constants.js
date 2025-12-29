@@ -1,0 +1,164 @@
+// Backend constants
+
+const CYCLE_CONSTANTS = {
+  MIN_CYCLE_LENGTH: 15,
+  MAX_CYCLE_LENGTH: 45,
+  AVERAGE_CYCLE_LENGTH: 28,
+  MIN_PERIOD_LENGTH: 1,
+  MAX_PERIOD_LENGTH: 10,
+  IRREGULAR_THRESHOLD: 7, // Days variation to consider irregular
+  OVULATION_DAYS_BEFORE_PERIOD: 14
+};
+
+const FLOW_TYPES = {
+  LIGHT: 'light',
+  NORMAL: 'normal',
+  HEAVY: 'heavy'
+};
+
+const CYCLE_PHASES = {
+  MENSTRUAL: 'menstrual',
+  FOLLICULAR: 'follicular',
+  OVULATION: 'ovulation',
+  LUTEAL: 'luteal'
+};
+
+const SYMPTOM_SEVERITY = {
+  NONE: 0,
+  MILD: 1,
+  MODERATE: 2,
+  SEVERE: 3,
+  VERY_SEVERE: 4,
+  EXTREME: 5
+};
+
+const PCOS_RISK_LEVELS = {
+  LOW: 'low',
+  MEDIUM: 'medium',
+  HIGH: 'high'
+};
+
+const USER_ROLES = {
+  USER: 'user',
+  ADMIN: 'admin',
+  MODERATOR: 'moderator'
+};
+
+const NOTIFICATION_TYPES = {
+  PERIOD_REMINDER: 'period_reminder',
+  OVULATION_REMINDER: 'ovulation_reminder',
+  IRREGULARITY_ALERT: 'irregularity_alert',
+  PCOS_INSIGHT: 'pcos_insight',
+  WELLNESS_TIP: 'wellness_tip'
+};
+
+const HTTP_STATUS_CODES = {
+  OK: 200,
+  CREATED: 201,
+  NO_CONTENT: 204,
+  BAD_REQUEST: 400,
+  UNAUTHORIZED: 401,
+  FORBIDDEN: 403,
+  NOT_FOUND: 404,
+  CONFLICT: 409,
+  UNPROCESSABLE_ENTITY: 422,
+  INTERNAL_SERVER_ERROR: 500,
+  SERVICE_UNAVAILABLE: 503
+};
+
+const ERROR_TYPES = {
+  VALIDATION_ERROR: 'VALIDATION_ERROR',
+  AUTHENTICATION_ERROR: 'AUTHENTICATION_ERROR',
+  AUTHORIZATION_ERROR: 'AUTHORIZATION_ERROR',
+  NOT_FOUND_ERROR: 'NOT_FOUND_ERROR',
+  CONFLICT_ERROR: 'CONFLICT_ERROR',
+  SERVER_ERROR: 'SERVER_ERROR'
+};
+
+const PAGINATION = {
+  DEFAULT_PAGE: 1,
+  DEFAULT_LIMIT: 20,
+  MAX_LIMIT: 100
+};
+
+const RATE_LIMITS = {
+  GENERAL: {
+    WINDOW_MS: 15 * 60 * 1000, // 15 minutes
+    MAX_REQUESTS: 100
+  },
+  AUTH: {
+    WINDOW_MS: 15 * 60 * 1000, // 15 minutes
+    MAX_REQUESTS: 5 // Stricter for auth endpoints
+  },
+  ML_PREDICTION: {
+    WINDOW_MS: 60 * 1000, // 1 minute
+    MAX_REQUESTS: 10
+  }
+};
+
+const VALIDATION_RULES = {
+  EMAIL: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+  PASSWORD_MIN_LENGTH: 6,
+  NAME_MIN_LENGTH: 1,
+  NAME_MAX_LENGTH: 50,
+  NOTES_MAX_LENGTH: 500,
+  BMI_MIN: 10,
+  BMI_MAX: 50,
+  HEIGHT_MIN: 100, // cm
+  HEIGHT_MAX: 250, // cm
+  WEIGHT_MIN: 30, // kg
+  WEIGHT_MAX: 300, // kg
+  AGE_MIN: 12,
+  AGE_MAX: 60
+};
+
+const ML_CONFIG = {
+  PCOS_MODEL_PATH: process.env.PCOS_MODEL_PATH || '/models/pcos_model.joblib',
+  CYCLE_MODEL_PATH: process.env.CYCLE_MODEL_PATH || '/models/cycle_model.joblib',
+  ML_API_URL: process.env.ML_API_URL || 'http://localhost:8000',
+  ML_API_TIMEOUT: 30000, // 30 seconds
+  PREDICTION_CACHE_TTL: 3600 // 1 hour in seconds
+};
+
+const DATABASE_CONFIG = {
+  CONNECTION_TIMEOUT: 30000,
+  MAX_POOL_SIZE: 10,
+  MIN_POOL_SIZE: 2,
+  RETRY_ATTEMPTS: 3,
+  RETRY_DELAY: 1000
+};
+
+const SECURITY_CONFIG = {
+  JWT_EXPIRES_IN: process.env.JWT_EXPIRES_IN || '7d',
+  PASSWORD_RESET_EXPIRES: 10 * 60 * 1000, // 10 minutes
+  EMAIL_VERIFICATION_EXPIRES: 24 * 60 * 60 * 1000, // 24 hours
+  BCRYPT_ROUNDS: 12,
+  MAX_LOGIN_ATTEMPTS: 5,
+  LOCKOUT_TIME: 15 * 60 * 1000 // 15 minutes
+};
+
+const FEATURE_FLAGS = {
+  ENABLE_ML_PREDICTIONS: process.env.ENABLE_ML_PREDICTIONS !== 'false',
+  ENABLE_NOTIFICATIONS: process.env.ENABLE_NOTIFICATIONS !== 'false',
+  ENABLE_ANALYTICS: process.env.ENABLE_ANALYTICS !== 'false',
+  ENABLE_CACHING: process.env.ENABLE_CACHING !== 'false'
+};
+
+module.exports = {
+  CYCLE_CONSTANTS,
+  FLOW_TYPES,
+  CYCLE_PHASES,
+  SYMPTOM_SEVERITY,
+  PCOS_RISK_LEVELS,
+  USER_ROLES,
+  NOTIFICATION_TYPES,
+  HTTP_STATUS_CODES,
+  ERROR_TYPES,
+  PAGINATION,
+  RATE_LIMITS,
+  VALIDATION_RULES,
+  ML_CONFIG,
+  DATABASE_CONFIG,
+  SECURITY_CONFIG,
+  FEATURE_FLAGS
+};
