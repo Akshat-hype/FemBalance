@@ -41,23 +41,29 @@ const Signup = () => {
 
                 <form className="flex flex-col space-y-4" onSubmit={handleSubmit(onSubmit)}>
                     <input
-                        type="name"
+                        type="text"
                         placeholder="Username"
                         {...register("name", { required: true })}
                         className="px-4 py-3 rounded-full border border-gray-400 focus:outline-none"
                     />
+                    {errors.name && <p className="text-red-500 text-sm">Username is required</p>}
+
                     <input
                         type="email"
                         placeholder="Email"
                         {...register("email", { required: true })}
                         className="px-4 py-3 rounded-full border border-gray-400 focus:outline-none"
                     />
+                    {errors.email && <p className="text-red-500 text-sm">Email is required</p>}
+
                     <input
                         type="password"
                         placeholder="Password"
                         {...register("password", { required: true })}
                         className="px-4 py-3 rounded-full border border-gray-400 focus:outline-none"
                     />
+                    {errors.password && <p className="text-red-500 text-sm">Password is required</p>}
+
                     <input 
                         type="submit"
                         value="Sign up"
@@ -68,10 +74,8 @@ const Signup = () => {
                 <div className="text-center mt-4 text-sm">
                     <p className="mt-2 text-black">
                         Have an account?{" "}
-                        <Link to='/login'>
-                        <a href="#" className="text-purple-600 font-medium hover:underline">
+                        <Link to='/login' className="text-purple-600 font-medium hover:underline">
                             login
-                        </a>
                         </Link>
                     </p>
                 </div>

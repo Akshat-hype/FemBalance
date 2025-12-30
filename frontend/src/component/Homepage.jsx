@@ -332,21 +332,30 @@ const Tip = ({ icon, text }) => (
   </div>
 );
 
-const Button = ({ onClick, loading, text, color = "indigo" }) => (
-  <button
-    onClick={onClick}
-    disabled={loading}
-    className={`bg-${color}-500 hover:bg-${color}-600 text-white font-medium py-2 px-5 rounded-full shadow-md hover:scale-105 transition ${
-      loading && "opacity-70 cursor-not-allowed"
-    }`}
-  >
-    {loading ? (
-      <span className="flex items-center gap-2 justify-center">
-        <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-        Loading...
-      </span>
-    ) : (
-      text
-    )}
-  </button>
-);
+const Button = ({ onClick, loading, text, color = "indigo" }) => {
+  const colorClasses = {
+    indigo: "bg-indigo-500 hover:bg-indigo-600",
+    pink: "bg-pink-500 hover:bg-pink-600",
+    violet: "bg-violet-500 hover:bg-violet-600",
+    blue: "bg-blue-500 hover:bg-blue-600"
+  };
+
+  return (
+    <button
+      onClick={onClick}
+      disabled={loading}
+      className={`${colorClasses[color]} text-white font-medium py-2 px-5 rounded-full shadow-md hover:scale-105 transition ${
+        loading && "opacity-70 cursor-not-allowed"
+      }`}
+    >
+      {loading ? (
+        <span className="flex items-center gap-2 justify-center">
+          <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+          Loading...
+        </span>
+      ) : (
+        text
+      )}
+    </button>
+  );
+};
